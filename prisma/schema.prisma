@@ -6,28 +6,39 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url = "postgres://default:OufXVMrzYL47@ep-snowy-wind-29956503-pooler.us-east-1.postgres.vercel-storage.com/verceldb?pgbouncer=true&connect_timeout=15"//env("POSTGRES_PRISMA_URL") // uses connection pooling
+  provider  = "postgresql"
+  url       = "postgres://default:OufXVMrzYL47@ep-snowy-wind-29956503-pooler.us-east-1.postgres.vercel-storage.com/verceldb?pgbouncer=true&connect_timeout=15" //env("POSTGRES_PRISMA_URL") // uses connection pooling
   directUrl = "postgres://default:OufXVMrzYL47@ep-snowy-wind-29956503.us-east-1.postgres.vercel-storage.com/verceldb" //env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
 
 model Account {
-  id                 String  @id @default(cuid())
-  userId             String
-  type               String
-  provider           String
-  providerAccountId  String
-  refresh_token      String? 
-  access_token       String? 
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String? 
-  session_state      String?
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
+}
+
+model Link {
+  id         String @id @default(cuid())
+  userId     String
+  title      String
+  url        String
+  background String // New field for background
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
 }
 
 model Session {
@@ -46,6 +57,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  Link          Link[]
 }
 
 model VerificationToken {
@@ -55,4 +67,3 @@ model VerificationToken {
 
   @@unique([identifier, token])
 }
-
