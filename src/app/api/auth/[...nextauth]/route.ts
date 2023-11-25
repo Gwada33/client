@@ -35,7 +35,7 @@ export const authConfig = {
         }
     },
     adapter: PrismaAdapter(prisma)
-} satisfies NextAuthOptions
+}
 
 const handler = NextAuth(authConfig)
 export { handler as POST, handler as GET};
