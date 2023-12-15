@@ -38,6 +38,7 @@ model Link {
   title      String
   url        String
   background String
+  published Boolean @default(true)
   user       User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])

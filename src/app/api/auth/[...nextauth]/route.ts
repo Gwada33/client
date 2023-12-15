@@ -33,23 +33,6 @@ export const authConfig: NextAuthOptions = {
       }
       return session;
     },
-    async signIn({ user }) {
-      // Créer un lien de base pour le nouvel utilisateur
-      await prisma.link.create({
-        data: {
-          title: 'My Link',
-          url: 'https://example.com',
-          background: '#ffffff', // Remplacez par votre couleur de fond souhaitée
-          user: {
-            connect: {
-              id: user.id,
-            },
-          },
-        },
-      });
-
-      return true;
-    },
   },
   adapter: PrismaAdapter(prisma),
 };
