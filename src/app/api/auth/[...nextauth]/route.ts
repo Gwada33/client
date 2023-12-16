@@ -25,7 +25,7 @@ export const authConfig: NextAuthOptions = {
       clientSecret: GoogleSecret as string
     })
   ],
-  callbacks: {
+  /*callbacks: {
     session: async ({ session, user }) => {
       console.log(session, user);
       if (session.user) {
@@ -33,7 +33,7 @@ export const authConfig: NextAuthOptions = {
       }
       return session;
     },
-  },
+  },*/
   adapter: PrismaAdapter(prisma),
 };
 

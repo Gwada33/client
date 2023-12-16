@@ -12,7 +12,8 @@ export default async function UserNav() {
     return (
         <div className="navbar bg-base-100">
         <div className="flex-1">
-          <a className="btn btn-ghost text-xl">daisyUI</a>
+            <img className=" w-12 h-12" src="https://cdn.discordapp.com/attachments/1175562014135959628/1184985722424410212/DeepLink.png?ex=658df6f4&is=657b81f4&hm=112caff6efa7ee3241aaef11affc933021750b5a3c878c7a65ef6bc3e82f0e8f&" alt="" />
+          <a className="btn btn-ghost text-xl">Deeplink</a>
         </div>
         <div className="flex-none gap-2">
           <div className="form-control">

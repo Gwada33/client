@@ -1,12 +1,15 @@
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { getRequiredSession } from "@/lib/auth"
+"use client"
+// Autre composant ou page
+import React from "react";
+import Dashboard from "@/app/dashboard/dashboard";
+import ButtonCreate from "./button-create";
 
-export default async function Dashboard() {
-  const session = await getRequiredSession()
+const Dasboard: React.FC = () => {
   return (
-    <div className="flex flex-col w-full min-h-screen bg-black text-white overflow-hidden">
-      
-    </div>
-  )
-}
+    <Dashboard>
+        <ButtonCreate />
+    </Dashboard>
+  );
+};
+
+export default Dasboard;

@@ -35,8 +35,7 @@ model Account {
 model Link {
   id         String  @id @default(cuid())
   userId     String
-  title      String
-  url        String
+  username   String
   background String
   published Boolean @default(true)
   user       User    @relation(fields: [userId], references: [id], onDelete: Cascade)
